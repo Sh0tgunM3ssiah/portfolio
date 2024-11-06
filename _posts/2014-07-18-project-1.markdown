@@ -1,11 +1,11 @@
 ---
 layout: default
 modal-id: 1
-date: 2014-07-18
+date: 2024-10-06
 img: cabin.png
 alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
+project-date: October 2024
+client: Personal Project
 category: Web Development
-description: Use this area of the page to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+description: "<a href='https://propenalty.com'>ProPenalty.com</a>: A tool that allows the user to compare professional sports player salaries and fines to their own income"
 ---
