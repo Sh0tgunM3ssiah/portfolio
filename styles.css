@@ -26,6 +26,8 @@ body {
   background-color: var(--clr-bg);
 }
 
+
+
 .light {
   --clr-bg: #fcfcfc;
   --clr-bg-alt: #fff;
@@ -81,7 +83,7 @@ h4 {
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: square;
 }
 
 a {
@@ -90,6 +92,26 @@ a {
 
 button {
   cursor: pointer;
+}
+
+.pad10{
+  padding: 10px;
+}
+
+.pad5Top{
+  padding-top: 5px;
+}
+
+.pad10Top{
+  padding-top: 10px;
+}
+
+.pad20Top{
+  padding-top: 20px !important;
+}
+
+.pad10Btm{
+  padding-bottom: 10px;
 }
 
 @media (max-width: 900px) {
@@ -226,10 +248,6 @@ main {
   margin: 0 auto;
 }
 
-.section {
-  margin-top: 5em;
-}
-
 .section__title {
   text-align: center;
   margin-bottom: 1em;
@@ -265,7 +283,7 @@ main {
 
 .about__desc {
   font-size: 1rem;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .about__desc,
@@ -279,6 +297,206 @@ main {
 
 .about .btn--outline {
   margin-right: 1em;
+}
+
+.hidden {
+  display: none; /* Hide the content initially */
+}
+
+.read-more-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--clr-primary);
+  background-color: transparent;
+  border: 2px solid var(--clr-primary);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.read-more-btn:hover {
+  background-color: var(--clr-primary);
+  color: var(--clr-bg);
+}
+
+
+/*              */
+/* TIMELINE CSS */
+/*              */
+
+.experience {
+  padding: 2rem;
+}
+
+/* Timeline container */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 auto;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--clr-primary);
+  transform: translateX(-50%);
+}
+
+/* Timeline item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* Timeline item content */
+.timeline-content {
+  background: var(--clr-bg-alt); /* Adjusts with light/dark mode */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow); /* Dynamic shadow for light/dark mode */
+  color: var(--clr-fg); /* Text color based on theme */
+  position: relative;
+  width: 45%;
+}
+
+/* Position left or right of the timeline */
+.timeline-item:nth-child(odd) .timeline-content {
+  left: 0;
+}
+.timeline-item:nth-child(even) .timeline-content {
+  left: 55%;
+}
+
+/* Circle marker */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--clr-primary); /* Primary color for theme */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Connecting line to the marker */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 4px;
+  height: calc(100% - 10px);
+  background: var(--clr-primary); /* Primary color for theme */
+  transform: translateX(-50%);
+}
+
+/* Last item removes line */
+/* .timeline-item:last-child::after {
+  display: none;
+} */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline::before {
+    display: none; /* Hides the vertical timeline line */
+  }
+
+  .timeline-item::before,
+  .timeline-item::after {
+    display: none; /* Hides the circles and connecting lines */
+  }
+  .timeline-content {
+    width: 100%;
+    left: 0 !important;
+  }
+  .timeline-item:nth-child(even) .timeline-content {
+    left: 0 !important;
+  }
+}
+
+
+/* EDUCATION */
+
+/* Education Section */
+.education {
+  padding: 2rem;
+  margin-top: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.education__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.education__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--clr-bg-alt);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.education__details h3 {
+  font-size: 1.4rem;
+  color: var(--clr-fg-alt);
+}
+
+.education__details h4 {
+  font-size: 1.2rem;
+  color: var(--clr-primary);
+  margin-top: 0.5rem;
+}
+
+.education__details p {
+  margin-top: 0.8rem;
+  color: var(--clr-fg);
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.education__years {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--clr-fg-alt);
+  margin-left: 2rem;
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .education__item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .education__years {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+
+
+/* PROJECTS */
+
+.projects {
+  padding: 2rem;
 }
 
 .projects__grid {
@@ -310,6 +528,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   margin: 1.2em 0;
+  list-style-type: none;
 }
 
 .project__stack-item {
@@ -321,6 +540,10 @@ main {
 
 .project .link--icon {
   margin-left: 0.5em;
+}
+
+.skills {
+  padding: 2rem;
 }
 
 .skills__list {
@@ -336,9 +559,82 @@ main {
   margin: 0.5em;
 }
 
+/* Contact Form Section */
 .contact {
-  flex-direction: column;
+  background-color: var(--clr-bg-alt); /* Matches the light/dark mode alt background */
+  padding: 3rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow); /* Dynamic shadow for light/dark mode */
+  margin: 2rem auto; /* Center the section vertically and horizontally */
+  text-align: center; /* Center-align all text and elements */
 }
+
+.contact h2 {
+  color: var(--clr-fg-alt); /* Matches theme text color */
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase; /* Matches the heading style */
+  letter-spacing: 1px;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Stack inputs and button vertically */
+  gap: 1.5rem; /* Add space between form elements */
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--clr-primary); /* Border matches primary color */
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--clr-bg); /* Matches theme background */
+  color: var(--clr-fg); /* Matches theme text color */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--clr-fg-alt); /* Matches theme alt text color */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background-color: var(--clr-bg-alt); /* Alt background for focus */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form textarea {
+  resize: none;
+  height: 150px;
+}
+
+.contact-form .btn--submit {
+  padding: 1rem;
+  background-color: var(--clr-primary); /* Primary color button */
+  color: var(--clr-bg-alt); /* Text color matches alt background */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+}
+
+.contact-form .btn--submit:hover {
+  background-color: var(--clr-bg-alt); /* Button changes to alt background */
+  color: var(--clr-primary); /* Text changes to primary color */
+  transform: scale(1.02);
+}
+
+
+
 
 .footer {
   padding: 3em 0;
