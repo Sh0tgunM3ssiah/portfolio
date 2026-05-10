@@ -20,31 +20,35 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  line-height: 1.5;
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.6;
   color: var(--clr-fg);
   background-color: var(--clr-bg);
+  font-optical-sizing: auto;
 }
 
 
 
 .light {
-  --clr-bg: #fcfcfc;
-  --clr-bg-alt: #fff;
-  --clr-fg: #555;
-  --clr-fg-alt: #444;
-  --clr-primary: #2978b5;
-  --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --clr-bg: #f0f3f9;
+  --clr-bg-alt: #ffffff;
+  --clr-fg: #4b5569;
+  --clr-fg-alt: #1c2434;
+  --clr-primary: #1d6fa5;
+  --clr-accent: #0ea5e9;
+  --shadow: rgba(15, 23, 42, 0.08) 0px 4px 24px 0px,
+    rgba(15, 23, 42, 0.04) 0px 1px 2px 0px;
 }
 
 .dark {
-  --clr-bg: #23283e;
-  --clr-bg-alt: #2a2f4c;
-  --clr-fg: #bdbddd;
-  --clr-fg-alt: #cdcdff;
-  --clr-primary: #90a0d9;
-  --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  --clr-bg: #171a24;
+  --clr-bg-alt: #222633;
+  --clr-fg: #b8c0d4;
+  --clr-fg-alt: #e6eaf5;
+  --clr-primary: #7eb8e8;
+  --clr-accent: #38bdf8;
+  --shadow: rgba(0, 0, 0, 0.35) 0px 12px 40px 0px,
+    rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
 }
 
 ::-moz-selection {
@@ -62,12 +66,16 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: "Outfit", "DM Sans", system-ui, sans-serif;
   line-height: 1.2;
   color: var(--clr-fg-alt);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 h1 {
   font-size: 4rem;
+  font-weight: 700;
 }
 
 h2 {
@@ -203,8 +211,9 @@ button {
 .btn--plain {
   text-transform: initial;
   background-color: var(--clr-bg-alt);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px 0px;
+  border: 1px solid color-mix(in srgb, var(--clr-primary) 12%, transparent);
+  border-radius: 999px;
 }
 
 .btn--plain:hover {
@@ -235,28 +244,66 @@ button {
 }
 
 .header {
-  height: 8em;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 5.5rem;
   max-width: 1100px;
   width: 95%;
   margin: 0 auto;
   justify-content: space-between;
+  padding: 0.25rem 0;
+  background-color: color-mix(in srgb, var(--clr-bg) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--clr-primary) 12%, transparent);
 }
 
 main {
   max-width: 1100px;
   width: 95%;
   margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.section {
+  margin-top: 3.5rem;
 }
 
 .section__title {
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 1.35em;
   text-transform: uppercase;
+  font-size: 1.65rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 0.5rem;
+}
+
+.section__title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 2.75rem;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--clr-primary),
+    var(--clr-accent, var(--clr-primary))
+  );
 }
 
 .nav__list {
   margin-right: 1.5em;
   display: flex;
+  list-style: none;
 }
 
 .nav__list-item {
@@ -270,7 +317,8 @@ main {
 
 .about {
   flex-direction: column;
-  margin-top: 3em;
+  margin-top: 2.25rem;
+  padding: 1.5rem 0 0;
 }
 
 .about__name {
@@ -305,14 +353,15 @@ main {
 
 .read-more-btn {
   margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--clr-primary);
   background-color: transparent;
   border: 2px solid var(--clr-primary);
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .read-more-btn:hover {
@@ -358,11 +407,12 @@ main {
 
 /* Timeline item content */
 .timeline-content {
-  background: var(--clr-bg-alt); /* Adjusts with light/dark mode */
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow); /* Dynamic shadow for light/dark mode */
-  color: var(--clr-fg); /* Text color based on theme */
+  background: var(--clr-bg-alt);
+  padding: 1.15rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--clr-primary) 14%, transparent);
+  color: var(--clr-fg);
   position: relative;
   width: 45%;
 }
@@ -447,8 +497,9 @@ main {
   align-items: flex-start;
   background-color: var(--clr-bg-alt);
   box-shadow: var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--clr-primary) 12%, transparent);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 1.5rem;
 }
 
@@ -513,8 +564,11 @@ main {
   max-width: 100%;
   text-align: center;
   padding: 2em;
+  background-color: var(--clr-bg-alt);
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--clr-primary) 15%, transparent);
   box-shadow: var(--shadow);
-  transition: transform 0.2s linear;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
   overflow: hidden;
 }
 
@@ -527,7 +581,8 @@ main {
 
 @media (hover: hover) and (pointer: fine) {
   .project:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--clr-primary) 22%, transparent);
   }
 }
 
@@ -637,8 +692,8 @@ main {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  background-color: var(--clr-bg-alt); /* Alt background for focus */
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--clr-bg-alt);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--clr-primary) 35%, transparent);
 }
 
 .contact-form textarea {
@@ -692,7 +747,7 @@ main {
 
 @media (max-width: 600px) {
   .header {
-    height: 6em;
+    height: 5rem;
   }
 
   .section {
@@ -705,7 +760,7 @@ main {
     position: absolute;
     right: 0;
     left: 0;
-    top: 5em;
+    top: 5rem;
     background-color: var(--clr-bg);
     width: 0;
     overflow: hidden;

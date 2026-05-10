@@ -1,6 +1,6 @@
 const body = document.body
 
-const btnTheme = document.querySelector('.fa-moon')
+const btnTheme = document.querySelector('#btn-theme')
 const btnHamburger = document.querySelector('.fa-bars')
 
 const addThemeClass = (bodyClass, btnClass) => {
@@ -8,22 +8,27 @@ const addThemeClass = (bodyClass, btnClass) => {
   btnTheme.classList.add(btnClass)
 }
 
-const getBodyTheme = localStorage.getItem('portfolio-theme')
-const getBtnTheme = localStorage.getItem('portfolio-btn-theme')
-
-addThemeClass(getBodyTheme, getBtnTheme)
+const storedTheme = localStorage.getItem('portfolio-theme')
+const storedBtnTheme = localStorage.getItem('portfolio-btn-theme')
+if (
+  storedTheme &&
+  storedBtnTheme &&
+  (storedTheme === 'light' || storedTheme === 'dark')
+) {
+  body.classList.remove('light', 'dark')
+  body.classList.add(storedTheme)
+  btnTheme.classList.remove('fa-moon', 'fa-sun')
+  btnTheme.classList.add(storedBtnTheme)
+}
 
 const isDark = () => body.classList.contains('dark')
 
 const setTheme = (bodyClass, btnClass) => {
-
-	body.classList.remove(localStorage.getItem('portfolio-theme'))
-	btnTheme.classList.remove(localStorage.getItem('portfolio-btn-theme'))
-
+  body.classList.remove('light', 'dark')
+  btnTheme.classList.remove('fa-moon', 'fa-sun')
   addThemeClass(bodyClass, btnClass)
-
-	localStorage.setItem('portfolio-theme', bodyClass)
-	localStorage.setItem('portfolio-btn-theme', btnClass)
+  localStorage.setItem('portfolio-theme', bodyClass)
+  localStorage.setItem('portfolio-btn-theme', btnClass)
 }
 
 const toggleTheme = () =>
