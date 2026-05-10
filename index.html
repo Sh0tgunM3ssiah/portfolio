@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Sean McMullen — full stack software engineer portfolio, experience, and projects." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https: blob:; connect-src https://formspree.io https://*.formspree.io; form-action https://formspree.io; base-uri 'self'; object-src 'none'; frame-src https://formspree.io https://*.formspree.io https://www.google.com https://www.gstatic.com; upgrade-insecure-requests"
+    />
     <link rel="icon" href="favicon_io/android-chrome-192x192.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +20,8 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles.css" />
     <title>Sean McMullen</title>
@@ -360,15 +367,34 @@
             action="https://formspree.io/f/xqaagoag"
             method="POST"
             class="contact-form"
+            autocomplete="on"
           >
+            <input
+              type="text"
+              name="_gotcha"
+              class="hp-field"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
             <label>
-              <input type="email" name="email" placeholder="Your email" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email"
+                required
+                maxlength="254"
+                autocomplete="email"
+                inputmode="email"
+              />
             </label>
             <label>
               <textarea
                 name="message"
                 placeholder="Your message"
                 required
+                maxlength="8000"
+                autocomplete="off"
               ></textarea>
             </label>
             <button type="submit" class="btn btn--submit">Send</button>
